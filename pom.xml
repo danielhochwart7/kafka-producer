@@ -16,6 +16,7 @@
 
 	<properties>
 		<java.version>11</java.version>
+		<kafka.version>2.7.0</kafka.version>
 	</properties>
 
 	<dependencies>
@@ -38,6 +39,22 @@
 			<groupId>org.projectreactor</groupId>
 			<artifactId>reactor-spring</artifactId>
 			<version>1.0.1.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+			<version>${kafka.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-streams</artifactId>
+			<version>${kafka.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-streams-scala_2.13</artifactId>
+			<version>${kafka.version}</version>
 		</dependency>
 	</dependencies>
 

@@ -5,15 +5,12 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @EnableScheduling
 @Component
 public class EventsGenerator {
 
-    private WebClient httpClient;
-    private List<String> events = new ArrayList<>();
+    private final WebClient httpClient;
+    private final Producer producer = new Producer();
 
     EventsGenerator(WebClient httpClient) {
         this.httpClient = httpClient;
@@ -25,10 +22,7 @@ public class EventsGenerator {
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
-        events.add(event);
-    }
-
-    public List<String> getEvents() {
-        return events;
+        producer.send(event);
+        System.out.println(event);
     }
 }
